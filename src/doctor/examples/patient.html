@@ -90,28 +90,28 @@
                   <div class="row">
                     <div class="col-lg-6">
                       <div class="form-group">
-                        <label class="form-control-label" for="input-first-name">Symptoms for Disease1</label>
-                        <p>Disease1 description here</p>
+                        <label class="form-control-label" for="input-first-name">Diabetes Analysis</label>
+                        <p id="dia">Patient is at risk</p>
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group">
-                        <label class="form-control-label" for="input-last-name">Symptoms for Disease2</label>
-                        <p>Disease2 desc here</p>
+                        <label class="form-control-label" for="input-last-name">Heart Diesee Analysis</label>
+                        <p id="heart">Patient is at risk</p>
                       </div>
                     </div>
                   </div>
                                     <div class="row">
                     <div class="col-lg-6">
                       <div class="form-group">
-                        <label class="form-control-label" for="input-first-name">Symptoms for Disease3</label>
-                        <p>Disease3 description here</p>
+                        <label class="form-control-label" for="input-first-name">Kidnee Analysis</label>
+                        <p id="kid">Patient maybe at risk</p>
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group">
-                        <label class="form-control-label" for="input-last-name">Disease4</label>
-                        <p>Disease4 description here</p>
+                        <label class="form-control-label" for="input-last-name">Breast Cancer Analysis</label>
+                        <p id="breast">Patient Does not suffer from such a disease</p>
                       </div>
                     </div>
                   </div>
@@ -134,6 +134,7 @@
   <!--   Argon JS   -->
   <script src="../assets/js/argon-dashboard.min.js?v=1.1.0"></script>
   <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script>
     window.TrackJS &&
       TrackJS.install({
@@ -143,6 +144,7 @@
   </script>
   <script src="/js/web3.min.js"></script>
   <script src="/js/truffle-contract.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src="/js/app.js"></script>
   <script>
   function getParameterByName(name, url) {
@@ -154,7 +156,7 @@
     if (!results[2]) return '';
     return decodeURIComponent(results[2].replace(/\+/g, ' '));
   }
-  
+  deets = []
   //First get my ether
   App.init()
     .then(() => {
@@ -167,10 +169,11 @@
       docAddress = getParameterByName("patient")
       return Patient.getPatient(docAddress)
     })
-    .then((name) => {
-      $('#name').text(name[0])
-      $('#email').text(name[1])
-    });
+    .then((a) => {
+      console.log(a)
+      $("#name").text(a[0])
+      $("#email").text(a[1])
+    })
     
   function approve() {
     docAddress = getParameterByName("doc")

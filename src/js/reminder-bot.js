@@ -27,23 +27,23 @@ var questions = [
   },
   {
     q: "Gender",
-    k:"sex"
+    k:"Sex"
   },
   {
     q: "Age",
-    k:"age"
+    k:"Age"
   },
   {
     q: "How many Pregnanancies",
-    k:"pregnancies"
+    k:"Pregnancies"
   },
   {
     q: "What is your BMI",
-    k:"bmi"
+    k:"BMI"
   },
   {
     q: "What was the last measured Blood Pressure",
-    k:"bp"
+    k:"BloodPressure"
   },
   {
     q: "What was the last measured Glucode Level",
@@ -51,40 +51,52 @@ var questions = [
   },
   {
     q: "Range your Chest Pain from 1-4",
-    k:"chestPain"
+    k:"ChestPain"
   },
   {
     q: "What is yout Cholestrol Level",
-    k:"cl"
+    k:"Cholestrol"
   },
   {
     q: "Family History of Diabetes",
-    k:"bloodSugar"
-  },
+    k:"BloodSugar"
+  }, // 
   {
     q: "What are your ECG Levels?",
-    k:"ecg"
+    k:"ECG"
   },
   {
     q: "Average Heart Rate Levels?",
-    k:"heartRate"
+    k:"HeartRate"
   },
   {
-    q: "Dietary Preference (0 for Veg or 1 f0r Non Veg)",
-    k:"albumin"
-  },
-  {
-    q: "Haemo",
-    k:"haemoglobin"
+    q: "Haemoglobin Levels",
+    k:"Haemoglobin"
   },
   {
     q: "Are you often tired or dizzy?",
-    k:"hypertension"
+    k:"Hypertension"
   },
   {
-    q: "Do you have any blood related issued",
-    k:"rbc"
+    q: "Red Blood Cell Count",
+    k:"RBC"
+  },
+  {
+    q: "Rate from 1-10 Uniformity Cell size",
+    k:"cell_size"
   },  
+  {
+    q: "Rate from 1-10 Uniformity Cell shape",
+    k:"cell_shape"
+  },
+  {
+    q: "Rate from 1-10 Single Epithelial Cell Size",
+    k:"single_ep_cell"
+  },
+  {
+    q: "Rate from 1-10 Bare Nuclei",
+    k:"bare_nuclei"
+  },
   {
     done:true
   }

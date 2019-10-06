@@ -93,6 +93,14 @@ Patient = {
       .catch(e => {
         console.log(e);
       });
+  },
+
+
+  getDiabetes : (address) => {
+    return getPatient(address)
+              .then((name) => {
+                return axios.post("")
+              })
   }
 };
 
@@ -132,26 +140,30 @@ Doctor = {
 
 
   getDoctors: (fn) => {
-
+    a = null;
     return App.contracts.MedicalRecord.deployed().then(instance => {
       contractInstance = instance;
       return contractInstance.docCount();
     }).then((c) => {
       c = c.toNumber();
-
       for(var i=0;i<c;i++) {
           contractInstance.docArray(i)
             .then((address) => {
+              a = address;
               return Doctor.getDoctorDetails(address)
             })     
             .then((doc) => {
-              fn(doc)
+              fn(doc,a)
             })
       }
 
     });
 
   }
+
+
+
+
 };
 
 $(function() {

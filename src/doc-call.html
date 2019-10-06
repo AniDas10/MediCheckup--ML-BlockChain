@@ -110,7 +110,8 @@
             return Doctor.getDoctorDetails(App.account)
         })
         .then((name) => {
-            name = name[0].replace(" ","").trim()
+            
+        });
             ua = "NishayMadhani@hackathon.onsip.com";
             //ua = name + "@hackathon.onsip.com";
             console.log(ua)
@@ -127,9 +128,9 @@
             };
             var simple = new SIP.Web.Simple(options);
             simple.on('ringing', function() {
+                console.log("Answered")
                 simple.answer();
             });
-        });
 
     
     

@@ -23,21 +23,10 @@
     <link rel="stylesheet" href="https://unpkg.com/botui/build/botui-theme-default.css" />
   </head>
   <body>
-    <div class="botui-app-container" id="reminder-bot">
-    <button type="button" class="btn cancel" style="  background-color: #8EF3A5; /* Green */
-  border: none;
-  color: white;
-  padding: 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-  border-radius: 8px;
-">Let us know you!<bot-ui></bot-ui></button> 
-      
-    </div>
+    <center><h2><p style="position:relative; align-content: center;">Patient's Survey</p></h2></center>
+    <div class="botui-app-container" id="reminder-bot" style="position: absolute; width: 50%; border: 2.5px solid teal;  box-shadow: 4px 4px; z-index: 1; position: relative; align-content: center;">
+    <bot-ui></bot-ui>
+     </div>
 
     <script src="https://cdn.jsdelivr.net/vue/latest/vue.min.js"></script>
     <script src="https://unpkg.com/botui/build/botui.js"></script>
@@ -48,98 +37,5 @@
     <script src="js/truffle-contract.js"></script>
     <script src="js/app.js"></script>
     <script src="js/reminder-bot.js"></script>
-    <!--script>
-      var botui = new BotUI('reminder-bot');
-  var name = "";
-
-  botui.message
-  .bot('Please enter your name?')
-  .then(function () {
-    return botui.action.text({
-        action: {
-          placeholder: 'Aapka Naam!'
-        }
-      })
-    }).then(function (res) {
-      botui.message
-        .bot({
-          delay: 500,
-          content: 'reminder added: ' + res.value
-        });
-        name = res.value;
-  }).then(function () {
-    return botui.action.button({
-      delay: 1000,
-      action: [{
-        text: 'Yep',
-        value: 'yes'
-      }, {
-        text: 'Nope!',
-        value: 'no'
-      }]
-    })
-}).then(function (res) {
-  if(res.value == 'yes') {
-    showReminderInput();
-  } else {
-    botui.message.bot('Okay.');
-  }
-});
-
-function validateEmail(email) {
-  var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  return re.test(email);
-}
-
-function validate() {
-  var $result = $("#result");
-  var email = $("#email").val();
-  $result.text("");
-
-  if (validateEmail(email)) {
-    $result.text(email + " is valid :)");
-    $result.css("color", "green");
-  } else {
-    $result.text(email + " is not valid :(");
-    $result.css("color", "red");
-  }
-  return false;
-}
-
-$("#validate").on("click", validate);
-
-var showReminderInput = function () {
-  botui.message
-    .bot({
-      delay: 500,
-      content: 'Write your reminder below:'
-    })
-    .then(function () {
-      return botui.action.text({
-        delay: 1000,
-        action: {
-          placeholder: 'Buy some milk'
-        }
-      })
-    }).then(function (res) {
-      botui.message
-        .bot({
-          delay: 500,
-          content: 'reminder added: ' + res.value
-        });
-
-      return botui.action.button({
-        delay: 1000,
-        action: [{
-          icon: 'plus',
-          text: 'add another',
-          value: 'yes'
-        }]
-      })
-    }).then(showReminderInput);
-}
-
-
-    </script-->
   </body>
 </html>

@@ -167,7 +167,15 @@
     docAddress = getParameterByName("doc")
     Patient.approveDoctor(docAddress)
           .then(() => {
+             web3.eth.sendTransaction({
+              from: App.account,
+              to:docAddress,
+              value:1e18*0.2
+            },function(recpt) {
+              
+            console.log(recpt)
             alert("Approved")
+            })
           })
   }  
   

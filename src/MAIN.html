@@ -45,9 +45,9 @@
               <h1 class="white">Healthcare at your desk!!</h1>
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod <br>tempor incididunt ut labore et dolore magna aliqua.</p>
               <a href="#patient" class="btn btn-appoint" id="patientBoard" hidden>Continue</a>
-              <a href="#doctor" class="btn btn-appoint" id="docBoard" hidden>Continue</a>
-              <a href="#docSign" class="btn btn-appoint" id="docLink" hidden>Doctor</a>
-              <a href="/patient-signup" class="btn btn-appoint" id="patientLink" hidden>Patient</a>
+              <a href="/doctor/index.html" class="btn btn-appoint" id="docBoard" hidden>Continue</a>
+              <a href="/doctor/examples/register.html" class="btn btn-appoint" id="docLink" hidden>Doctor</a>
+              <a href="/patient.html" class="btn btn-appoint" id="patientLink" hidden>Patient</a>
             </div>
             <div class="overlay-detail text-center">
               <a href="#service"><i class="fa fa-angle-down"></i></a>
@@ -73,7 +73,9 @@
     $("#patientBoard").hide()
     $("#docBoard").hide()
 
-    App.isRegistered()
+    App.init().then(() => {
+      console.log("CALLING");
+      App.isRegistered()
       .then((a) => {
           a = a.toNumber();
           if(a === 2) {
@@ -85,6 +87,7 @@
             $("#docBoard").show()
           } 
       });
+    });
 
   </script>
 

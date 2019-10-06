@@ -30,6 +30,62 @@ var questions = [
     k:"sex"
   },
   {
+    q: "Age",
+    k:"age"
+  },
+  {
+    q: "How many Pregnanancies",
+    k:"pregnancies"
+  },
+  {
+    q: "What is your BMI",
+    k:"bmi"
+  },
+  {
+    q: "What was the last measured Blood Pressure",
+    k:"bp"
+  },
+  {
+    q: "What was the last measured Glucode Level",
+    k:"glucose"
+  },
+  {
+    q: "Range your Chest Pain from 1-4",
+    k:"chestPain"
+  },
+  {
+    q: "What is yout Cholestrol Level",
+    k:"cl"
+  },
+  {
+    q: "Family History of Diabetes",
+    k:"bloodSugar"
+  },
+  {
+    q: "What are your ECG Levels?",
+    k:"ecg"
+  },
+  {
+    q: "Average Heart Rate Levels?",
+    k:"heartRate"
+  },
+  {
+    q: "Dietary Preference (0 for Veg or 1 f0r Non Veg)",
+    k:"albumin"
+  },
+  {
+    q: "Haemo",
+    k:"haemoglobin"
+  },
+  {
+    q: "Are you often tired or dizzy?",
+    k:"hypertension"
+  },
+  {
+    q: "Do you have any blood related issued",
+    k:"rbc"
+  },  
+  {
     done:true
   }
 ];
@@ -38,6 +94,7 @@ questions.reduce((prevPromise,question) => {
   console.log(question)
   return prevPromise.then(() => {
     if(question.done) {
+
       return saveToDB();
     }
     return createPromise(question)
@@ -55,6 +112,7 @@ function saveToDB() {
         })
         .then((a) => {
           if(a.toNumber() == 2) {
+            console.log(deets)
             return Patient.savePatient(deets['name'],deets['email'],JSON.stringify(deets));
           } else {
             alert("Already Registered")

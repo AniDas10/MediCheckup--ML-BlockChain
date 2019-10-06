@@ -92,13 +92,13 @@
                 <br>
                 <small>Sign up with credentials</small>
               </div>
-              <form role="form" action="" method="post">
+              <form role="form" method="post" id="register">
                 <div class="form-group">
                   <div class="input-group input-group-alternative mb-3">
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Name" type="text">
+                    <input class="form-control" placeholder="Name" type="text" id="name" required>
                   </div>
                 </div>
                 <div class="form-group">
@@ -106,7 +106,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Email" type="email">
+                    <input class="form-control" placeholder="Email" type="email" id="email" required>
                   </div>
                 </div>
                 <div class="form-group">
@@ -114,7 +114,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Experience" type="number">
+                    <input class="form-control" placeholder="Experience" type="number" id="exp" required>
                   </div>
                 </div>
                 <div class="form-group">
@@ -122,19 +122,11 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Specialisation" type="text">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="input-group input-group-alternative mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
-                    </div>
-                    <input class="form-control" placeholder="Something About You" type="text">
+                    <input class="form-control" placeholder="Specialisation" type="text" id="sp" required>
                   </div>
                 </div>
                 <div class="text-center">
-                  <button type="button" class="btn btn-primary mt-4">Create account</button>
+                  <button type="submit" class="btn btn-primary mt-4">Create account</button>
                 </div>
               </form>
             </div>
@@ -159,6 +151,42 @@
         token: "ee6fab19c5a04ac1a32a645abde4613a",
         application: "argon-dashboard-free"
       });
+  </script>
+  <script src="/js/web3.min.js"></script>
+  <script src="/js/truffle-contract.js"></script>
+  <script src="/js/app.js"></script>
+  <script src="/js/serialize.js"></script>
+
+  <script>
+
+  
+
+  $('form#register').submit((e) => {
+    e.stopPropagation()
+    e.preventDefault()
+    
+    App.init().then(function() {
+      Doctor.saveDoctorDetails(
+      $('#name').val(),
+      $('#email').val(),
+      $('#sp').val(),
+      $('#exp').val()
+    ).then(function() {
+      
+      window.location.href = "/doctor/index.html"
+    })
+    })
+
+
+
+
+
+
+
+  })
+
+
+  
   </script>
 </body>
 

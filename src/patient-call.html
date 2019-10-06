@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<!-- saved from url=(0061)https://1410inc.xyz/video-call-app/comm.html?room=tekcjia5lym -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">    
+        
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Chat App</title>
+        
+        <!-- Favicon -->
+        <link rel="shortcut icon" href="https://1410inc.xyz/video-call-app/img/favicon.ico">
+        <!-- favicon ends -->
+        
+        <!--- LOAD FILES -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">    
+      <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+      <!-- Include all compiled plugins (below), or include individual files as needed -->
+      <script src="js/bootstrap.min.js"></script>
+    
+        <!-- Custom styles -->
+        <link rel="stylesheet" href="./Chat App_files/comm.css">
+
+    </head>
+    
+    
+    <body class="vsc-initialized">
+        <div class="container-fluid">
+            <div class="row"><div class="vsc-controller vsc-nosource" data-vscid="dt1y6j5ci"></div>
+                <!-- Remote Video -->
+                <video id="remoteVideo" poster="img/vidbg.png" playsinline="" autoplay="" data-vscid="dt1y6j5ci"></video>
+                <!-- Remote Video -->
+            </div>
+            
+            <div class="row margin-top-20">                
+                <!-- Call Buttons -->
+                <div class="col-sm-12 text-center" id="callBtns">
+                    <button class="btn btn-danger btn-sm" id="endCall" disabled=""><i class="fa fa-phone-square"></i></button>
+                </div>
+                <!-- Call Buttons -->
+                
+                <!-- Timer -->
+                <div class="col-sm-12 text-center margin-top-5" style="color:#fff">
+                    <span id="countHr"></span>h:
+                    <span id="countMin"></span>m:
+                    <span id="countSec"></span>s
+                </div>
+                <!-- Timer -->
+            </div>
+            
+            
+            <!-- Local Video -->
+            <div class="row">
+                <div class="col-sm-12"><div class="vsc-controller vsc-nosource" data-vscid="i596y6nyc"></div>
+                    <video id="myVid" poster="img/vidbg.png" muted="" autoplay="" data-vscid="i596y6nyc"></video>
+                </div>
+            </div>
+            <!-- Local Video -->
+        </div>
+
+        
+        <!--Modal to show that we are calling-->
+        <div id="callModal" class="modal">
+            <div class="modal-content text-center">
+                <div class="modal-header" id="callerInfo"></div>
+                <div class="modal-body">
+                    <button type="button" class="btn btn-danger btn-sm" id="endCall">
+                        <i class="fa fa-times-circle"></i> End Call
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!--Modal end-->
+
+
+        <!--Modal to give options to receive call-->
+        <div id="rcivModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header" id="calleeInfo"></div>
+
+                <div class="modal-body text-center">
+                    <button type="button" class="btn btn-success btn-sm answerCall" id="startAudio">
+                        <i class="fa fa-phone"></i> Audio Call
+                    </button>
+                    <button type="button" class="btn btn-success btn-sm answerCall" id="startVideo">
+                        <i class="fa fa-video-camera"></i> Video Call
+                    </button>
+                    <button type="button" class="btn btn-danger btn-sm" id="rejectCall">
+                        <i class="fa fa-times-circle"></i> Reject Call
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!--Modal end-->
+        
+        <!--Snackbar -->
+        <div id="snackbar" class="null"></div>
+        <!-- Snackbar -->
+
+    <script src="/js/sip.min.js"></script>
+    <script>
+    
+
+    function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    }
+    var options = {
+      media: {
+        remote: {
+          video: document.getElementById('remoteVideo'),
+          // This is necessary to do an audio/video call as opposed to just a video call
+          audio: document.getElementById('remoteVideo')
+        }
+      },
+      ua: {}
+    };
+    var simple = new SIP.Web.Simple(options);
+    var endButton = document.getElementById('endCall');
+    endButton.addEventListener("click", function () {
+        simple.hangup();
+        alert("Call Ended");
+    }, false);
+    simple.call('NishayMadhani@hackathon.onsip.com');
+    </script>
+
+    
+</body></html>
